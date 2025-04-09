@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adria Mooney</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/463f70b152.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="index.js" defer></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "ytQzND-sSB_TkISCl",
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <section id="landing-page" onmousemove="moveBackground(event)">
+      <nav>
+        <figure>
+          <img id="personal-logo" src="assets/logo.svg" alt="" />
+        </figure>
+        <ul class="nav__link--list">
+          <li class="nav__link">
+            <a
+              href="#"
+              class="nav__link--anchor link__hover-effect link__hover-effect--black"
+              onclick="toggleModal()"
+              >About</a
+            >
+          </li>
+          <li class="nav__link">
+            <a
+              href="#projects"
+              class="nav__link--anchor link__hover-effect link__hover-effect--black"
+              >Projects</a
+            >
+          </li>
+          <li class="nav__link">
+            <a
+              href="#"
+              onclick="toggleModal()"
+              class="nav__link--anchor link__hover-effect link__hover-effect--black"
+              >Contact</a
+            >
+          </li>
+          <li class="nav__link" onclick="toggleContrast()">
+            <a
+              href="#"
+              class="nav__link--anchor link__hover-effect link__hover-effect--black click"
+              ><i class="fa-solid fa-circle-half-stroke"></i
+            ></a>
+          </li>
+        </ul>
+      </nav>
+      <header class="header">
+        <div class="header__content">
+          <h1 class="title">Hey</h1>
+          <h1 class="title secondary">I'm Adria</h1>
+          <p class="header__para">
+            I'm a <b class="secondary">Full Stack Software Engineer</b> with a
+            strong passion for problem solving and progressive improvements.
+            <br />
+            Here's a bit more
+            <b onclick="toggleModal()" class="click secondary">about me</b>.
+          </p>
+          <div class="social__list">
+            <a href="https://www.linkedin.com/in/adriamooney" class="social__link click" target="_blank">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a
+              href="https://github.com/adriamooney"
+              class="social__link click"
+              target="_blank"
+            >
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="./assets/Adria_Mooney_Resume.pdf" class="social__link click" target="_blank" download>
+              <i class="fa-solid fa-file-pdf"></i>
+            </a>
+          </div>
+        </div>
+        <figure class="header__headshot">
+          <img class="headshot__img" src="assets/Adria_Mooney_headshot.png" alt="">
+        </figure>
+      </header>
+      <button class="mail__btn click" onclick="toggleModal()">
+        <i class="fa-solid fa-envelope"></i>
+      </button>
+      <a href="#projects" class="scroll">
+        <div class="scroll__icon click"></div>
+      </a>
+      <div class="modal">
+        <div class="modal__half modal__about">
+          <h3 class="modal__title modal__title--about">
+            Here's a bit about me
+          </h3>
+          <h4 class="modal__sub-title modal__sub-title--about">
+            Frontend Software Engineer
+          </h4>
+          <p class="modal__para">
+            I'm a seasoned
+            <b class="secondary">frontend software engineer</b> with experience
+            working at San Francisco startups. Passion for
+            <b class="secondary">problem solving</b> and
+            <b class="secondary">user experience</b>.
+            <br />
+            Valuable team player and ticket closer excited to work on tough
+            problems and <b class="secondary">disruptive technology</b> serving
+            large user bases.
+          </p>
+          <div class="modal__languages">
+            <figure class="modal__language">
+              <img
+                class="modal__language--img"
+                src="assets/html_logo.png"
+                alt=""
+              />
+              <span class="language__name">HTML</span>
+            </figure>
+            <figure class="modal__language">
+              <img
+                class="modal__language--img"
+                src="assets/css_logo.png"
+                alt=""
+              />
+              <span class="language__name">CSS</span>
+            </figure>
+            <figure class="modal__language">
+              <img
+                class="modal__language--img"
+                src="assets/js_logo.png"
+                alt=""
+              />
+              <span class="language__name">Javascript</span>
+            </figure>
+            <figure class="modal__language">
+              <img
+                class="modal__language--img"
+                src="assets/react_logo.png"
+                alt=""
+              />
+              <span class="language__name">React</span>
+            </figure>
+          </div>
+        </div>
+        <div class="modal__half modal__contact">
+          <i
+            class="fa-solid fa-close modal__exit click"
+            onclick="toggleModal()"
+          ></i>
+          <h3 class="modal__title modal__title--contact">Let's have a chat!</h3>
+          <h4 class="modal__sub-title modal__sub-title--contact">
+            I'm currently open to new opportunities.
+          </h4>
+          <form id="contact__form" onsubmit="contact(event)">
+            <div class="form__item">
+              <label class="form__item--label">Name</label>
+              <input type="text" class="input" name="user_name" required />
+            </div>
+            <div class="form__item">
+              <label class="form__item--label">Email</label>
+              <input type="email" class="input" name="user_email" required />
+            </div>
+            <div class="form__item">
+              <label class="form__item--label">Message</label>
+              <textarea class="input" name="message" required></textarea>
+            </div>
+            <button id="contact__submit" class="form__submit">
+              Send it my way
+            </button>
+          </form>
+          <div class="modal__overlay modal__overlay--loading">
+            <i class="fa-solid fa-spinner"></i>
+          </div>
+          <div class="modal__overlay modal__overlay--success">
+            Thanks for the message! Looking forward to speaking with you soon.
+          </div>
+        </div>
+      </div>
+      <img src="./assets/semi circle.svg" class="shape shape--0" />
+      <img src="./assets/circle.svg" class="shape shape--1" />
+      <img src="./assets/squiggly.svg" class="shape shape--2" />
+      <img src="./assets/circle.svg" class="shape shape--3" />
+      <img src="./assets/triangle.svg" class="shape shape--4" />
+      <img src="./assets/circle.svg" class="shape shape--5" />
+      <img src="./assets/squiggly.svg" class="shape shape--6" />
+      <img src="./assets/circle.svg" class="shape shape--7" />
+      <img src="./assets/semi circle.svg" class="shape shape--8" />
+    </section>
+    <section id="projects">
+      <div class="container">
+        <div class="row">
+          <h1 class="section__title">
+            Here are some of my <span class="secondary">projects</span>
+          </h1>
+          <ul class="project__list">
+            <li class="project">
+              <div class="project__wrapper">
+                <img
+                  class="project__img"
+                  src="assets/nft_react.png"
+                  alt=""
+                />
+                <div class="project__wrapper--background"></div>
+                <div class="project__description">
+                  <h3 class="project__description--title">
+                    NFT Marketplace
+                  </h3>
+                  <h4 class="project__description--subtitle">
+                    HTML, CSS, Javascript, React
+                  </h4>
+                  <p class="project__description--para">
+                    React app with data fetched from API, integrated carousel library, responsive design, animations, skeleton loading states, javascript countdown timer component.
+
+                  </p>
+                  <div class="project__description--links">
+                    <a href="https://github.com/adriamooney/adria-internship" target="_blank" class="project__description--link">
+                      <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://adria-internship.vercel.app/" target="_blank" class="project__description--link">
+                      <i class="fa-solid fa-globe"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="project">
+              <div class="project__wrapper">
+                <img
+                  class="project__img"
+                  src="assets/cocktail_finder_javascript.png"
+                  alt=""
+                />
+                <div class="project__wrapper--background"></div>
+                <div class="project__description">
+                  <h3 class="project__description--title">
+                    Cocktail Finder - Vanilla JS
+                  </h3>
+                  <h4 class="project__description--subtitle">
+                    HTML, CSS, Javascript
+                  </h4>
+                  <p class="project__description--para">
+                    Fetches data from open API to allow searching for cocktails and viewing recipes.  Uses local storage to save favorite recipes.
+                  </p>
+                  <div class="project__description--links">
+                    <a href="https://github.com/adriamooney/cocktail-finder" target="_blank" class="project__description--link">
+                      <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://adriamooney.github.io/cocktail-finder/" target="_blank" class="project__description--link">
+                      <i class="fa-solid fa-globe"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="project">
+              <div class="project__wrapper">
+                <img
+                  class="project__img"
+                  src="assets/library_ecommerce_react.png"
+                  alt=""
+                />
+                <div class="project__wrapper--background"></div>
+                <div class="project__description">
+                  <h3 class="project__description--title">
+                    Books Ecommerce
+                  </h3>
+                  <h4 class="project__description--subtitle">
+                    HTML, CSS, Javascript, React
+                  </h4>
+                  <p class="project__description--para">
+                    Fetches books from data file, ability to browse and filter lists of books.  Add books to cart.
+                  </p>
+                  <div class="project__description--links">
+                    <a href="https://github.com/adriamooney/fes-react-ecommerce" target="_blank" class="project__description--link">
+                      <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://fes-react-ecommerce.vercel.app/" target="_blank" class="project__description--link">
+                      <i class="fa-solid fa-globe"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="project">
+              <div class="project__wrapper">
+                <img
+                  class="project__img"
+                  src="assets/cocktail_finder_react.png"
+                  alt=""
+                />
+                <div class="project__wrapper--background"></div>
+                <div class="project__description">
+                  <h3 class="project__description--title">
+                    Cocktail Finder - React / Firebase
+                  </h3>
+                  <h4 class="project__description--subtitle">
+                    HTML, CSS, Javascript, React, Firebase
+                  </h4>
+                  <p class="project__description--para">
+                    Fetches cocktails from API. Ability to search recipes by ingredient, view recipes and save  recipes to favorites. Uses Firebase authentication and database to save favorites to user account.
+                  </p>
+                  <div class="project__description--links">
+                    <a href="https://github.com/adriamooney/cocktail-finder-react" target="_blank" class="project__description--link">
+                      <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://cocktail-finder-react.vercel.app/" target="_blank" class="project__description--link">
+                      <i class="fa-solid fa-globe"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="project">
+              <div class="project__wrapper">
+                <img
+                  class="project__img"
+                  src="assets/google_docs_clone.png"
+                  alt=""
+                />
+                <div class="project__wrapper--background"></div>
+                <div class="project__description">
+                  <h3 class="project__description--title">
+                    Google Docs Clone
+                  </h3>
+                  <h4 class="project__description--subtitle">
+                    HTML, CSS, React, Firebase
+                  </h4>
+                  <p class="project__description--para">
+                    Simple google doc clone demo. Uses React Quill libary to create text editor.  Saves document to Firebase and uses Firebase authentication to allow multiple users to edit the doc.
+                  </p>
+                  <div class="project__description--links">
+                    <a href="https://github.com/adriamooney/google-docs-clone" target="_blank" class="project__description--link">
+                      <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://google-docs-clone-gamma-orpin.vercel.app/" target="_blank" class="project__description--link">
+                      <i class="fa-solid fa-globe"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row footer__row">
+          <a href="#" class="footer__anchor">
+            <figure class="footer__logo">
+              <img src="assets/logo.svg" class="footer__logo--img" alt="" />
+            </figure>
+            <span class="footer__logo--popper">
+              Top
+              <i class="fas fa-arrow-up"></i>
+            </span>
+          </a>
+          <div class="footer__social--list">
+            <a
+              href="https://github.com/adriamooney"
+              target="_blank"
+              class="footer__social--link link__hover-effect link__hover-effect--white"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/adriamooney"
+              target="_blank"
+              class="footer__social--link link__hover-effect link__hover-effect--white"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="#"
+              onclick="toggleModal()"
+              class="footer__social--link link__hover-effect link__hover-effect--white"
+            >
+              Contact
+            </a>
+            <a
+              href="./assets/Adria_Mooney_Resume.pdf"
+              target="_blank"
+              class="footer__social--link link__hover-effect link__hover-effect--white"
+            >
+              Resume
+            </a>
+          </div>
+          <div class="footer__copyright">
+            Copyright &copy; 2025 Adria Mooney
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
