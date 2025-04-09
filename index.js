@@ -11,10 +11,10 @@ function contact(event) {
     loading.classList += ' modal__overlay--visible';
 
     emailjs.sendForm(
-        '', 
-        '',
+        'service_jtibkeo', 
+        'template_6v5jgyu',
         event.target,
-        ''
+        'ytQzND-sSB_TkISCl'
     ).then(() => {
         loading.classList.remove('modal__overlay--visible');
         success.classList += ' modal__overlay--visible';
